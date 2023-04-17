@@ -12,7 +12,11 @@ app = Flask(__name__, static_folder="static")
 
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template("index.html")
+
+@app.route('/homepage', methods=['GET', 'POST'])
+def homepage():
+    return render_template("index.html")
 
 
 @app.route("/predict", methods=['GET', 'POST'])
@@ -45,8 +49,8 @@ def predict():
 
         graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-        return render_template("visualization.html", prediction_text=f'Positive tweets: {num_positive} Negative tweets: {num_negative} Neutral tweets: {num_neutral}',graphJSON=graphJSON)
-    return render_template("visualization.html")
+        return render_template("generic.html", prediction_text=f'Positive tweets: {num_positive} Negative tweets: {num_negative} Neutral tweets: {num_neutral}',graphJSON=graphJSON)
+    return render_template("generic.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
