@@ -46,11 +46,13 @@ def predict():
 
 
         fig = px.histogram(data, x='classification', color='classification', color_discrete_sequence=["red", "grey", "blue"])
+        fig2 = px.scatter(data, x="compound", y="classification", color="classification")
 
         graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+        graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
 
-        return render_template("generic.html", prediction_text=f'Positive tweets: {num_positive} Negative tweets: {num_negative} Neutral tweets: {num_neutral}',graphJSON=graphJSON)
-    return render_template("generic.html")
+        return render_template("results.html", prediction_text=f'Positive tweets: {num_positive} Negative tweets: {num_negative} Neutral tweets: {num_neutral}',graphJSON=graphJSON, graphJSON2=graphJSON2, prompt=prompt)
+    return render_template("results.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
