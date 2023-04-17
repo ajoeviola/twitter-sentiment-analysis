@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+    * {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #272b34;
+        font-family: 'Khula', sans-serif;
+        font-weight: 300;
+        color: white;
+        line-height: 1em;
+        margin: 0;
+        padding: 2em 1em;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tweet Sentiment</title>
+</head>
+
+<body>
+    <div class="center">
+        <h1 style="text-align:center">Twitter sentiment analysis</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <label for="prompt" colo>Prompt: </label>
+            <input type="text" name="prompt" placeholder="prompt" required="required">
+            <label for="NumberOfTweets" colo>Number of Tweets: </label>
+            <input type="text" name="NumberOfTweets" placeholder="NumberOfTweets" required="required">
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Begin tweet sentiment analysis</button>
+        </form>
+        <br>
+        <br>
+        <h2>
+            {{ prediction_text }}
+        </h2>
+    </div>
+</body>
+
+</html>
