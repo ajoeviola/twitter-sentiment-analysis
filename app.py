@@ -4,6 +4,7 @@ from scrape import get_tweets
 from sentiment_prediction import predict_sentiment
 import json
 import plotly
+import plotly.figure_factory as ff
 import plotly.express as px
 
 
@@ -28,6 +29,7 @@ def predict():
         #get sentiment analysis
         get_tweets(prompt, tweets)
         data = predict_sentiment()
+        data['Sentiment Score'] = data['compound']
         try:
             num_positive = int(data['classification'].value_counts()['positive'])
         except KeyError:
@@ -43,15 +45,15 @@ def predict():
         except KeyError:
             num_neutral = 0
 
+        hist = px.histogram(data, x='classification', color='classification', color_discrete_map={'negative': 'red', 'neutral': 'grey', 'positive': 'blue'}, template = "seaborn")
+        scatter = px.scatter(data, x="Sentiment Score", y="classification", color="classification", template = "seaborn")
+        table = ff.create_table(data[['classification','Sentiment Score','tweetcontent']])
 
+        histJSON = json.dumps(hist, cls=plotly.utils.PlotlyJSONEncoder)
+        scatterJSON = json.dumps(scatter, cls=plotly.utils.PlotlyJSONEncoder)
+        tableJSON = json.dumps(table,  cls=plotly.utils.PlotlyJSONEncoder)
 
-        fig = px.histogram(data, x='classification', color='classification', color_discrete_sequence=["red", "grey", "blue"])
-        fig2 = px.scatter(data, x="compound", y="classification", color="classification")
-
-        graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-        graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
-
-        return render_template("results.html", prediction_text=f'Positive tweets: {num_positive} Negative tweets: {num_negative} Neutral tweets: {num_neutral}',graphJSON=graphJSON, graphJSON2=graphJSON2, prompt=prompt)
+        return render_template("results.html", prediction_text=f'Negative tweets: {num_negative} Neutral tweets: {num_neutral} Positive tweets: {num_positive}',histJSON=histJSON, scatterJSON=scatterJSON, tableJSON=tableJSON, prompt=prompt)
     return render_template("results.html")
 
 if __name__ == "__main__":

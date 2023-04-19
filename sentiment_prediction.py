@@ -8,7 +8,7 @@ nltk.download('vader_lexicon')
 def predict_sentiment():
     #creating an object of sentiment intensity analyzer
     sia= SentimentIntensityAnalyzer()
-    data = pd.DataFrame(columns = ["compound", "negative", "positive", "classification"])
+    data = pd.DataFrame(columns = ["compound", "negative", "positive", "classification", "tweetcontent"])
 
     f = open('tweets.json')
     tweets = json.load(f)
@@ -28,7 +28,7 @@ def predict_sentiment():
             classification = 'neutral'
 
         #append our new tweet to the dataframe
-        data.loc[len(data.index)] = [compound, negative, positive, classification]
+        data.loc[len(data.index)] = [compound, negative, positive, classification, tweet["content"]]
 
 
     #num_positive = data['classification'].value_counts()['positive']

@@ -24,8 +24,9 @@
 			<nav>
 				<ul>
 					<li><a href="#intro">Welcome</a></li>
-					<li><a href="#one">Prediction</a></li>
-					<li><a href="#two">Get in touch</a></li>
+					<li><a href="#one">How it Works</a></li>
+					<li><a href="#two">Prediction</a></li>
+					<li><a href="#three">Get in touch</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -38,9 +39,9 @@
 		<section id="intro" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
 				<h1>Twitter Sentiment Prediction</h1>
-				<p>Predict the sentiment of the most recent tweets for a given prompt
+				<p>Predict the sentiment of the most recent tweets for a given prompt</p>
 				<ul class="actions">
-					<li><a href="#one" class="button scrolly">Try it out</a></li>
+					<li><a href="#one" class="button scrolly">How it works</a></li>
 				</ul>
 			</div>
 		</section>
@@ -48,15 +49,43 @@
 		<!-- One -->
 		<section id="one" class="wrapper style1 fullscreen fade-up">
 			<div class="inner">
+				<h1>How it Works</h1>
+				<p>Twitter Sentiment Prediction is a web app that helps you understand the sentiment of the most recent
+					tweets for a given prompt. The app uses a machine learning model called VADAR to analyze the
+					sentiment of the tweets and categorize them as positive, neutral, or negative.
+				</p>
+				<p>To use the app, simply enter a prompt in the search box (e.g., "COVID-19 vaccine") and click the
+					"Predict" button. The app will fetch the most recent tweets related to the prompt using the Twitter
+					API and analyze their sentiment using VADAR. The results will be displayed in a table with the tweet
+					text, sentiment score, and sentiment label.</p>
+				<p>The sentiment score represents how positive or negative the tweet is, with values ranging from -1
+					(most negative) to +1 (most positive). The sentiment label indicates whether the tweet is
+					positive,
+					neutral, or negative based on the sentiment score.</p>
+				<p>The app is built using Python, Flask, Bootstrap, and Azure, which are technologies used
+					by
+					data engineers and developers to build and deploy web applications. However, you don't need to
+					know
+					anything about these technologies to use the app. Simply enter a prompt and click the button to
+					get
+					insights into the sentiment of recent tweets on that topic!</p>
+				<ul class="actions"></ul>
+				<a href="#two" class="button scrolly">Try it out</a>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Two -->
+		<section id="two" class="wrapper style1 fullscreen fade-up">
+			<div class="inner">
 				<form action="{{ url_for('predict')}}" method="post">
-					<label for="prompt" colo>Prompt: </label>
-					<input type="text" name="prompt" placeholder="prompt" required="required">
+					<label for="prompt" colo>Search: </label>
+					<input type="text" name="prompt" placeholder="Write your prompt here" required="required">
 					<label for="NumberOfTweets" colo>Number of Tweets: </label>
-					<input type="text" name="NumberOfTweets" placeholder="NumberOfTweets" required="required">
+					<input type="text" name="NumberOfTweets" placeholder="How many tweets you want" required="required">
 					<br>
 					<br>
-					<button type="submit" class="btn btn-primary btn-block btn-large">Begin tweet sentiment
-						analysis</button>
+					<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
 				</form>
 				<br>
 				<br>
@@ -66,8 +95,8 @@
 			</div>
 		</section>
 
-		<!-- Two -->
-		<section id="two" class="wrapper style1 fade-up">
+		<!-- Three -->
+		<section id="three" class="wrapper style1 fade-up">
 			<div class="inner">
 				<h2>Get in touch</h2>
 				<p>Anthony Viola is a skilled data engineer with experience in developing and deploying machine learning

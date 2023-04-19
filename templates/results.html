@@ -31,14 +31,15 @@
 		<!-- Main -->
 		<section id="main" class="wrapper">
 			<div class="inner">
-				<h1 class="major">The Data for prompt: {{ prompt }}</h1>
+				<h1 class="major">The Data for Prompt: {{ prompt }}</h1>
 				<div>
-					<h2>
+					<h2 class="inner">
 						{{ prediction_text }}
 					</h2>
 				</div>
-				<div id='bar' class='bar'></div>
+				<div id='hist' class='hist'></div>
 				<div id='scatter' class='scatter'></div>
+				<div id='table' class='table'></div>
 			</div>
 		</section>
 
@@ -65,12 +66,16 @@
 	<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 	<script>
-		var graphs = {{ graphJSON | safe}};
-		Plotly.plot('bar', graphs, {});
+		var graphs = {{ histJSON | safe}};
+		Plotly.plot('hist', graphs, {});
 	</script>
 	<script>
-		var graph = {{ graphJSON2 | safe}};
+		var graph = {{ scatterJSON | safe}};
 		Plotly.plot('scatter', graph, {});
+	</script>
+	<script>
+		var graph = {{ tableJSON | safe}};
+		Plotly.plot('table', graph, {});
 	</script>
 
 </body>
