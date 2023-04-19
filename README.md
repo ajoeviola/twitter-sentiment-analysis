@@ -34,4 +34,4 @@ Once the app is running, you can access it at `http://localhost:5000`. Enter a p
 
 ## Credits
 
-This project was created by [Your Name](https://github.com/ajoeviola). The app uses the [VADAR](https://github.com/cjhutto/vaderSentiment) library for sentiment analysis, [snscrape](https://github.com/JustAnotherArchivist/snscrape) for fetching tweets, and has an [html5](https://html5up.net/) template
+This project was created by [Anthony Viola](https://github.com/ajoeviola). The app uses the [VADAR](https://github.com/cjhutto/vaderSentiment) library for sentiment analysis, [snscrape](https://github.com/JustAnotherArchivist/snscrape) for fetching tweets, and has an [html5](https://html5up.net/) template
