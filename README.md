@@ -4,7 +4,6 @@ This is a data engineering project that predicts the sentiment of the most recen
 
 ## Application
 
-The application is hosted on azure at https://twitter-prediction-sentiment.azurewebsites.net/
 Update: The scraping portion of the application (snscrape) is temporarily not working due to a twitter api change regarding authentication, therefore, this portion of the application is currently not functional. It will be back online as soon as the issue is resolved.
 
 ## Requirements
